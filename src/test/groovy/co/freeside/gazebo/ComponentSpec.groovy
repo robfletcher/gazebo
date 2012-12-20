@@ -2,9 +2,8 @@ package co.freeside.gazebo
 
 import spock.lang.Specification
 
+@Mixin(ComponentFixtures)
 class ComponentSpec extends Specification {
-
-	def componentDir = new File(getClass().getResource('/components').toURI())
 
 	void 'a component with a simple component.json is parsed'() {
 
