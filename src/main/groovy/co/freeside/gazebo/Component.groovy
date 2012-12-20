@@ -25,7 +25,10 @@ class Component {
 	}
 
 	List<File> getMain() {
-		[new File(baseDir, metadata.main).canonicalFile]
+		def filenames = metadata.main instanceof String ? [metadata.main] : metadata.main
+		filenames.collect {
+			new File(baseDir, it).canonicalFile
+		}
 	}
 
 }
