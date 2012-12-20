@@ -1,0 +1,14 @@
+apply plugin: 'groovy'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	groovy 'org.codehaus.groovy:groovy-all:1.8.8'
+
+	testCompile('org.spockframework:spock-core:0.7-groovy-1.8') {
+		exclude module: 'groovy-all'
+		exclude module: 'junit-dep'
+	}
+}
