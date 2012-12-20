@@ -24,13 +24,24 @@ class Gazebo {
 	}
 
 	private loadConfig() {
-		def configFile = new File(baseDir, '.bowerrc')
-		if (configFile.isFile()) {
-			configFile.withReader { reader ->
-				new JsonSlurper().parse(reader)
-			}
-		} else {
-			[:]
+		def config = [:]
+
+		def globalConfigFile = new File(System.getProperty('user.home'), '.bowerrc')
+		if (globalConfigFile.isFile()) {
+			config += readFileAsJson(globalConfigFile)
+		}
+
+		def localConfigFile = new File(baseDir, '.bowerrc')
+		if (localConfigFile.isFile()) {
+			config += readFileAsJson(localConfigFile)
+		}
+
+		config
+	}
+
+	private readFileAsJson(File localConfigFile) {
+		localConfigFile.withReader { reader ->
+			new JsonSlurper().parse(reader)
 		}
 	}
 }

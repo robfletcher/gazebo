@@ -9,4 +9,5 @@
 
 # Bower
 /src/test/resources/standard/components/
+/src/test/resources/nonStandard/lib/
 /src/test/resources/customDir/web-app/
