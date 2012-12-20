@@ -2,6 +2,7 @@
   "name": "resources",
   "version": "0.0.0",
   "dependencies": {
-    "jquery": "~1.8.3"
+    "jquery": "~1.8.3",
+    "bootstrap": "~2.2.2"
   }
 }
