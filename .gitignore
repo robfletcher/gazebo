@@ -8,4 +8,4 @@
 /out/
 
 # Bower
-/src/test/resources/components/
+/src/test/resources/root/components/

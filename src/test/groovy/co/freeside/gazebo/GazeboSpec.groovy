@@ -8,7 +8,7 @@ class GazeboSpec extends Specification {
 	void 'loads all components in its component directory'() {
 
 		given:
-		def gazebo = new Gazebo(componentDir)
+		def gazebo = new Gazebo(workDir)
 
 		expect:
 		gazebo.components.name == ['bootstrap', 'jquery']

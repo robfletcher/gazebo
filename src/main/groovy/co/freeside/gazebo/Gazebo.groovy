@@ -6,9 +6,9 @@ class Gazebo {
 
 	final Collection<Component> components
 
-	Gazebo(File componentsDir) {
+	Gazebo(File baseDir) {
 
-		this.componentsDir = componentsDir
+		componentsDir = new File(baseDir, 'components')
 
 		components = [] as Set
 		componentsDir.eachDir {
