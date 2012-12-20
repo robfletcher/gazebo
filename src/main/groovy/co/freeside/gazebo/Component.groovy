@@ -31,4 +31,8 @@ class Component {
 		}
 	}
 
+	Map<String, String> getDependencies() {
+		metadata.dependencies
+	}
+
 }
