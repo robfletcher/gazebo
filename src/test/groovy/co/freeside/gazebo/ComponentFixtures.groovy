@@ -2,7 +2,8 @@ package co.freeside.gazebo
 
 class ComponentFixtures {
 
-	def workDir = new File(getClass().getResource('/root').toURI())
-	def componentDir = new File(workDir, 'components')
+	def standardProjectHome = new File(getClass().getResource('/standard').toURI())
+	def customDirProjectHome = new File(getClass().getResource('/customDir').toURI())
+	def componentDir = new File(standardProjectHome, 'components')
 
 }
