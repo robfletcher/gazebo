@@ -23,20 +23,18 @@ class Gazebo {
 
 	}
 
-	private loadConfig() {
+	private Map loadConfig() {
 		def config = [:]
-
-		def globalConfigFile = new File(System.getProperty('user.home'), '.bowerrc')
-		if (globalConfigFile.isFile()) {
-			config += readFileAsJson(globalConfigFile)
-		}
-
-		def localConfigFile = new File(baseDir, '.bowerrc')
-		if (localConfigFile.isFile()) {
-			config += readFileAsJson(localConfigFile)
-		}
+		mergeConfigFile config, new File(System.getProperty('user.home'), '.bowerrc')
+		mergeConfigFile config, new File(baseDir, '.bowerrc')
 
 		config
+	}
+
+	private void mergeConfigFile(Map config, File configFile) {
+		if (configFile.isFile()) {
+			config.putAll readFileAsJson(configFile)
+		}
 	}
 
 	private readFileAsJson(File localConfigFile) {
