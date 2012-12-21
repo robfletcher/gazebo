@@ -19,7 +19,7 @@ class GazeboSpec extends Specification {
 		def gazebo = new Gazebo(standardProjectHome)
 
 		expect:
-		gazebo.components.name == ['bootstrap', 'jquery']
+		gazebo.components.name == ['backbone', 'bootstrap', 'jquery']
 
 	}
 

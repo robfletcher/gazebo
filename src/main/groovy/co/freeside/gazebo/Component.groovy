@@ -14,6 +14,12 @@ class Component {
 		metadata = new File(baseDir, 'component.json').withReader { reader ->
 			slurper.parse(reader)
 		}
+		def packageJson = new File(baseDir, 'package.json')
+		if (packageJson.isFile()) {
+			metadata += packageJson.withReader { reader ->
+				slurper.parse(reader)
+			}
+		}
 	}
 
 	String getName() {
