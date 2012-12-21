@@ -8,6 +8,6 @@
 /out/
 
 # Bower
-/src/test/resources/standard/components/
-/src/test/resources/nonStandard/lib/
-/src/test/resources/customDir/web-app/
+/src/test/resources/projects/standard/components/
+/src/test/resources/projects/nonStandard/lib/
+/src/test/resources/projects/customDir/web-app/
