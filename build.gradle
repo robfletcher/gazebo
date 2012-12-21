@@ -12,27 +12,13 @@ dependencies {
 	}
 }
 
-task initStandardProject(type: Exec) {
-	workingDir 'src/test/resources/projects/standard'
-	commandLine 'bower', 'install'
-	inputs.files new File(workingDir, 'component.json')
-	outputs.files new File(workingDir, 'components')
+[standard: 'components', nonStandard: 'lib', customDir: 'web-app/lib'].each { target, bowerDir ->
+	def taskName = "init${target.capitalize()}Project"
+	task(taskName, type: Exec) {
+		workingDir "src/test/resources/projects/$target"
+		commandLine 'bower', 'install', "--directory=$bowerDir"
+		inputs.files new File(workingDir, 'component.json')
+		outputs.files new File(workingDir, bowerDir)
+	}
+	processTestResources.dependsOn taskName
 }
-
-task initNonStandardProject(type: Exec) {
-	workingDir 'src/test/resources/projects/nonStandard'
-	commandLine 'bower', 'install', '--directory=lib'
-	inputs.files new File(workingDir, 'component.json')
-	outputs.files new File(workingDir, 'lib')
-}
-
-task initCustomDirProject(type: Exec) {
-	workingDir 'src/test/resources/projects/customDir'
-	commandLine 'bower', 'install'
-	inputs.files new File(workingDir, 'component.json')
-	outputs.files new File(workingDir, 'web-app')
-}
-
-processTestResources.dependsOn initStandardProject
-processTestResources.dependsOn initNonStandardProject
-processTestResources.dependsOn initCustomDirProject
